@@ -1,0 +1,16 @@
+services:
+  node-express-app:
+    # Pull new versions of image from here
+    image: daljit21docker/mooc-node-express-app:latest
+    container_name: node-express-app
+    restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Poll every 30 minutes = 1800 seconds
+    command: --cleanup --interval 1800
