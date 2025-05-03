@@ -13,4 +13,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     # Poll every 30 minutes = 1800 seconds
-    command: --cleanup --interval 1800
+    # --label-enable will only monitor/update containers with label specified. See above. 
+    command: --cleanup --interval 1800 --label-enable
